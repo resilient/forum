@@ -1,0 +1,1 @@
+This test application "Mini-forum" on Ruby on Rails 3
