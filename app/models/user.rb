@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true
 
   ROLES = %w[admin moderator user]
+
+	has_many :posts, dependent: :destroy
+	has_many :answers, dependent: :destroy
 end

@@ -11,6 +11,7 @@ class Ability
 
      can :manage, :all if user.role == "admin"
      can :read,   :all if user.role == "moderator"
+     can [:read, :create, :update], :all if user.role == "user"
 
     # here are :read, :create, :update and :destroy.
     #

@@ -1,4 +1,4 @@
-body {
+ody {
     background-color: #f5f5f5;
 }
 
@@ -78,6 +78,27 @@ img {
     margin: 0px;
     width: 50px;
     float: right;
+}
+
+.posts .admin-links {
+    padding-bottom: 10px;
+}
+
+.posts .lead {
+    margin-bottom: 0;
+}
+
+.posts .add-button {
+    margin: 10px 0;
+}
+
+.posts h1 {
+    margin: 0 0 10px 0;
+}
+
+.post .thumbnail {
+    padding: 10px 20px 20px 20px;
+    margin-bottom: 20px;
 }
 
 

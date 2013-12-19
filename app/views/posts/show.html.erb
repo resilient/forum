@@ -1,0 +1,39 @@
+<div class="post">
+	<div class="row-fluid">
+		<p class="text-left">
+			<small>
+			  <%= link_to 'Edit', edit_post_path(@post) %> |
+			  <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</small>
+		</p>
+		<p class="text-right">
+		  Created at <i><%= @post.created_at.to_time.strftime('%H:%M %e.%m.%Y') %></i> by <b><%= @post.user.username %></b>
+		</p>
+	</div>
+	<div class="thumbnail">
+		<div class="row-fluid">
+			<h2><%= @post.title %></h2>
+		</div>
+		<div class="row-fluid">
+		  <%= @post.body %>
+		</div>
+	</div>
+
+  <div class="row-fluid">
+    <p class="text-right add-button"><%= link_to 'Answer', new_post_answer_path(@post), class: "btn btn-small btn-primary" %></p>
+  </div>
+
+  <% @post.answers.each do |answer| %>
+		<div class="row-fluid">
+ 	    <%= answer.message %>
+		</div>
+	<% end %>
+</div>
+
+
+
+
+
+
+
+
