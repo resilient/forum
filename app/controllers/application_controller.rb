@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 	  redirect_to root_url, :alert => exception.message
   end
 
-	def save_action_to_log(action_name, entity_id, entity_name, entity_title = null)
+	def save_action_to_log(action_name, entity_id, entity_name, entity_title = nil)
 		unless current_user.role == 'user'
 			@log_action = ActionsLog.new
 
