@@ -1,0 +1,25 @@
+<div class="log">
+
+  <div class="row-fluid">
+      <h1><small>Log</small></h1>
+  </div>
+
+  <% @log_entries.each do |entry| %>
+    <div class="row-fluid">
+      <div class="span2">
+        <p><%= entry.created_at.to_time.strftime('%H:%M %e.%m.%Y') %></p>
+      </div>
+      <div class="span10">
+        <p>
+	   	    <%= entry.username %> (id <%= entry.user_id %>) <%= entry.action %> <%= entry.entity_name %> with id <%= entry.entity_id %>
+	        <% unless entry.entity_title.nil? %>
+	          (<%= entry.entity_title %>)
+	        <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+

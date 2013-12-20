@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131218191829) do
+ActiveRecord::Schema.define(:version => 20131220132001) do
+
+  create_table "actions_logs", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "username"
+    t.string   "action"
+    t.integer  "entity_id"
+    t.string   "entity_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "entity_title"
+  end
 
   create_table "answers", :force => true do |t|
     t.text     "message"

@@ -8,4 +8,6 @@ ForumApp::Application.routes.draw do
 	resources :accounts, except: :show
 
 	root :to => 'posts#index'
+
+	get "actions_logs/index", as: 'logs'
 end

@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(params[:post])
 
     if @post.save
+	    save_action_to_log('created', @post.id, 'post', @post.title)
       redirect_to @post, notice: 'Post was successfully created.'
     else
       render action: "new"
@@ -32,6 +33,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update_attributes(params[:post])
+	    save_action_to_log('updated', @post.id, 'post', @post.title)
       redirect_to @post, notice: 'Post was successfully updated.'
     else
       render action: "edit"
@@ -40,6 +42,9 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+
+    save_action_to_log('deleted', @post.id, 'post', @post.title)
+
     @post.destroy
 
     redirect_to posts_url

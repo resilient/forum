@@ -13,6 +13,8 @@ class AnswersController < ApplicationController
     @answer = @post.answers.new(params[:answer])
 
     if @answer.save
+	    save_action_to_log('created', @answer.id, 'answer')
+
       redirect_to post_path(@post), notice: 'Answer was successfully created.'
     else
       render action: "new"
