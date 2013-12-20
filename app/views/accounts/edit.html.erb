@@ -1,0 +1,32 @@
+<%= form_for(@user, url: account_url(@user), html: {method: :put,class: 'form-signin' }) do |f| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-error" id="error_explanation">
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<h2 class="form-signin-heading"><%= @user.username %>'s profile</h2>
+
+  <div><%= f.label :email %>
+  <%= f.email_field :email, autofocus: true %></div>
+
+  <div><%= f.label :username, "Username" %>
+  <%= f.text_field :username %></div>
+
+  <div><%= f.label :password, "New password" %> <i></i>
+  <%= f.password_field :password, autocomplete: "off" %></div>
+
+  <div><%= f.label :password_confirmation, "New password confirmation" %>
+  <%= f.password_field :password_confirmation %></div>
+
+	<div><%= f.collection_select :role, User::ROLES, :to_s, :humanize %></div>
+
+  <%= f.submit "Update", class: "btn btn-large" %>
+<% end %>

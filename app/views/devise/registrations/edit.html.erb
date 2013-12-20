@@ -25,7 +25,5 @@
   <div><%= f.label :current_password, "Current password" %>
   <%= f.password_field :current_password %></div>
 
-	<div><%= f.collection_select :role, User::ROLES, :to_s, :humanize %></div>
-
-  <%= f.submit "Update", class: "btn btn-large" %>
+	<%= f.submit "Update", class: "btn btn-large" %>
 <% end %>

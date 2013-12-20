@@ -2,8 +2,12 @@
 	<div class="row-fluid">
 		<p class="text-left">
 			<small>
-			  <%= link_to 'Edit', edit_post_path(@post) %> |
-			  <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+			  <% if can? :update, @post %>
+			    <%= link_to 'Edit', edit_post_path(@post) %>
+			  <% end %>
+			  <% if can? :destroy, @post %>
+			    <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+			  <% end %>
 			</small>
 		</p>
 		<p class="text-right">
@@ -24,8 +28,16 @@
   </div>
 
   <% @post.answers.each do |answer| %>
-		<div class="row-fluid">
- 	    <%= answer.message %>
+		<div class="row-fluid message">
+			<div class="span2">
+				<small>
+					<b>Author:</b> <%= answer.user.username %><br>
+					<i><%= answer.created_at.to_time.strftime('%H:%M %e.%m.%Y') %></i>
+				</small>
+			</div>
+			<div class="span10">
+	 	    <%= answer.message %>
+			</div>
 		</div>
 	<% end %>
 </div>

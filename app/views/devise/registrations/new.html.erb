@@ -15,8 +15,6 @@
 
   <%= f.password_field :password_confirmation, placeholder: "Password confirmation", class: "input-block-level" %>
 
-  <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
-
   <%= f.submit "Register", class: "btn btn-large" %>
 <% end %>
 

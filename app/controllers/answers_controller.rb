@@ -5,10 +5,6 @@ class AnswersController < ApplicationController
 		@post = Post.find(params[:post_id])
   end
 
-  def edit
-    @answer = Answer.find(params[:id])
-  end
-
   def create
 	  params[:answer][:user_id] = current_user.id
 
@@ -23,20 +19,4 @@ class AnswersController < ApplicationController
     end
   end
 
-  def update
-    @answer = Answer.find(params[:id])
-
-    if @answer.update_attributes(params[:answer])
-      redirect_to posts_url, notice: 'Answer was successfully updated.'
-    else
-      render action: "edit"
-    end
-  end
-
-  def destroy
-    @answer = Answer.find(params[:id])
-    @answer.destroy
-
-    redirect_to posts_url
-  end
 end

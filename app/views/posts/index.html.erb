@@ -23,11 +23,12 @@
 		<div class="row-fluid admin-links">
 			<p class="text-right">
 				<small>
-				  <%= link_to 'Show', post %>
 				  <% if can? :update, post %>
 				    <%= link_to 'Edit', edit_post_path(post) %>
 					<% end %>
-				  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+				  <% if can? :destroy, post %>
+				    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+				  <% end %>
 				</small>
 			</p>
 		</div>

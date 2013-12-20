@@ -2,19 +2,21 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-     #user ||= User.new # guest user (not logged in)
-     #if user.role == "admin"
-     #  can :manage, :all
-     #elsif user.role == "moderator"
-     #  can :read, Topic
-     #end
+	  user ||= User.new
 
-     can :manage, :all if user.role == "admin"
-     can :read,   :all if user.role == "moderator"
-     can [:read, :create, :update], :all if user.role == "user"
+    can :manage, :all if user.role == "admin"
 
-    # here are :read, :create, :update and :destroy.
-    #
-    #   can :update, Article, :published => true
+    if user.role == "moderator"
+	    can [:read, :create, :update, :destroy], Post
+      can [:read, :create], Answer
+			can :update, User, :id => user.id
+     end
+
+		if user.role == "user"
+		  can [:read, :create], [Post, Answer]
+		  can [:update, :destroy], Post, :user_id => user.id
+		  can :update, User, :id => user.id
+    end
+
   end
 end
